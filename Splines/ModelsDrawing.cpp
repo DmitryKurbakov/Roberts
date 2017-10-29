@@ -22,16 +22,24 @@ Bitmap ^ ModelsDrawing::DrawTetrahedron(Bitmap^ bm, int mode, float z)
 	//tt = tet->GetRotationMatrix(tt, 2, 0.3);
 	List<PointF>^ points;
 	
-	modVertixMatrix = GetCenteringModelmatrix(tet->transVertixMatrix);
-
+	
 	if (mode == 0)
 	{
+		modVertixMatrix = GetCenteringModelmatrix(tet->transVertixMatrix);
 		points = GetListOfTetrahedronPoints(tet->GetParallelProjectionMatrix(modVertixMatrix));
 	}
 
 	else if (mode == 1)
 	{
-		points = GetListOfTetrahedronPoints(tet->GetSinglePointPerspectiveProjectionMatrix(modVertixMatrix, z));
+
+		array<float, 2>^ t = tet->GetSinglePointPerspectiveProjectionPoints(
+			tet->GetSinglePointPerspectiveProjectionMatrix(
+				tet->transVertixMatrix, z));
+		
+		modVertixMatrix = GetCenteringModelmatrix(t);
+
+		points = GetListOfTetrahedronPoints(modVertixMatrix);
+	
 	}
 	
 

@@ -441,6 +441,7 @@ private:
 		// 
 		// MyForm
 		// 
+		this->AcceptButton = this->button1;
 		this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 		this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 		this->ClientSize = System::Drawing::Size(728, 476);

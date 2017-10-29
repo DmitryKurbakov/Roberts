@@ -34,7 +34,7 @@ public:
 	array<float, 2>^ GetParallelProjectionMatrix(array<float, 2>^ m);
 	array<float, 2>^ GetSinglePointPerspectiveProjectionMatrix(array<float, 2>^ m, float z);
 
-	array<float, 2>^ GetParallelProjectionPoints(array<float, 2>^ m);
+	array<float, 2>^ GetSinglePointPerspectiveProjectionPoints(array<float, 2>^ m);
 	//array<float, 2>^ MatrixMultiply(array<float, 2>^ a, array<float, 2>^ b);
 
 	

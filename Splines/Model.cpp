@@ -297,12 +297,13 @@ array<float, 2>^ Model::GetSinglePointPerspectiveProjectionMatrix(array<float, 2
 	return t;
 }
 
-array<float, 2>^ Model::GetParallelProjectionPoints(array<float, 2>^ m)
+array<float, 2>^ Model::GetSinglePointPerspectiveProjectionPoints(array<float, 2>^ m)
 {
 	for (int i = 0; i < m->GetLength(0); i++)
 	{
 		m[i, 0] /= m[i, 3];
 		m[i, 1] /= m[i, 3];
+		m[i, 2] /= m[i, 3];
 	}
 
 	return m;
