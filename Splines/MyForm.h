@@ -78,6 +78,11 @@ private: System::Windows::Forms::TextBox^  z0TextBox;
 private: System::Windows::Forms::RadioButton^  perspectiveProjectionRadioButton;
 private: System::Windows::Forms::RadioButton^  parallelProjectionRadioButton;
 private: System::Windows::Forms::Button^  button1;
+private: System::Windows::Forms::Label^  label14;
+private: System::Windows::Forms::Button^  button2;
+private: System::Windows::Forms::MenuStrip^  menuStrip1;
+private: System::Windows::Forms::ToolStripMenuItem^  îÏðîãðàììåToolStripMenuItem;
+private: System::Windows::Forms::OpenFileDialog^  openFileDialog1;
 
 
 
@@ -97,6 +102,8 @@ private:
 		this->pictureGroupBox = (gcnew System::Windows::Forms::GroupBox());
 		this->pictureBox = (gcnew System::Windows::Forms::PictureBox());
 		this->toolsGroupBox = (gcnew System::Windows::Forms::GroupBox());
+		this->label14 = (gcnew System::Windows::Forms::Label());
+		this->button2 = (gcnew System::Windows::Forms::Button());
 		this->button1 = (gcnew System::Windows::Forms::Button());
 		this->label13 = (gcnew System::Windows::Forms::Label());
 		this->z0TextBox = (gcnew System::Windows::Forms::TextBox());
@@ -123,9 +130,13 @@ private:
 		this->label3 = (gcnew System::Windows::Forms::Label());
 		this->label2 = (gcnew System::Windows::Forms::Label());
 		this->label1 = (gcnew System::Windows::Forms::Label());
+		this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
+		this->îÏðîãðàììåToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+		this->openFileDialog1 = (gcnew System::Windows::Forms::OpenFileDialog());
 		this->pictureGroupBox->SuspendLayout();
 		(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox))->BeginInit();
 		this->toolsGroupBox->SuspendLayout();
+		this->menuStrip1->SuspendLayout();
 		this->SuspendLayout();
 		// 
 		// pictureGroupBox
@@ -134,9 +145,9 @@ private:
 			| System::Windows::Forms::AnchorStyles::Left)
 			| System::Windows::Forms::AnchorStyles::Right));
 		this->pictureGroupBox->Controls->Add(this->pictureBox);
-		this->pictureGroupBox->Location = System::Drawing::Point(184, 12);
+		this->pictureGroupBox->Location = System::Drawing::Point(184, 31);
 		this->pictureGroupBox->Name = L"pictureGroupBox";
-		this->pictureGroupBox->Size = System::Drawing::Size(532, 452);
+		this->pictureGroupBox->Size = System::Drawing::Size(532, 517);
 		this->pictureGroupBox->TabIndex = 0;
 		this->pictureGroupBox->TabStop = false;
 		this->pictureGroupBox->Text = L"Èçîáðàæåíèå";
@@ -149,12 +160,14 @@ private:
 		this->pictureBox->BackColor = System::Drawing::SystemColors::ControlLightLight;
 		this->pictureBox->Location = System::Drawing::Point(6, 19);
 		this->pictureBox->Name = L"pictureBox";
-		this->pictureBox->Size = System::Drawing::Size(520, 427);
+		this->pictureBox->Size = System::Drawing::Size(520, 492);
 		this->pictureBox->TabIndex = 0;
 		this->pictureBox->TabStop = false;
 		// 
 		// toolsGroupBox
 		// 
+		this->toolsGroupBox->Controls->Add(this->label14);
+		this->toolsGroupBox->Controls->Add(this->button2);
 		this->toolsGroupBox->Controls->Add(this->button1);
 		this->toolsGroupBox->Controls->Add(this->label13);
 		this->toolsGroupBox->Controls->Add(this->z0TextBox);
@@ -181,12 +194,31 @@ private:
 		this->toolsGroupBox->Controls->Add(this->label3);
 		this->toolsGroupBox->Controls->Add(this->label2);
 		this->toolsGroupBox->Controls->Add(this->label1);
-		this->toolsGroupBox->Location = System::Drawing::Point(12, 12);
+		this->toolsGroupBox->Location = System::Drawing::Point(12, 31);
 		this->toolsGroupBox->Name = L"toolsGroupBox";
-		this->toolsGroupBox->Size = System::Drawing::Size(166, 452);
+		this->toolsGroupBox->Size = System::Drawing::Size(166, 517);
 		this->toolsGroupBox->TabIndex = 1;
 		this->toolsGroupBox->TabStop = false;
 		this->toolsGroupBox->Text = L"Èíñòðóìåíòû";
+		// 
+		// label14
+		// 
+		this->label14->AutoSize = true;
+		this->label14->Location = System::Drawing::Point(5, 472);
+		this->label14->Name = L"label14";
+		this->label14->Size = System::Drawing::Size(152, 13);
+		this->label14->TabIndex = 40;
+		this->label14->Text = L"Çàãðóçêà îáúåêòà èç ôàéëà:";
+		// 
+		// button2
+		// 
+		this->button2->Location = System::Drawing::Point(79, 488);
+		this->button2->Name = L"button2";
+		this->button2->Size = System::Drawing::Size(75, 23);
+		this->button2->TabIndex = 39;
+		this->button2->Text = L"Îáçîð";
+		this->button2->UseVisualStyleBackColor = true;
+		this->button2->Click += gcnew System::EventHandler(this, &MyForm::button2_Click);
 		// 
 		// button1
 		// 
@@ -439,21 +471,45 @@ private:
 		this->label1->TabIndex = 0;
 		this->label1->Text = L"Ïåðåìåùåíèå";
 		// 
+		// menuStrip1
+		// 
+		this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->îÏðîãðàììåToolStripMenuItem });
+		this->menuStrip1->Location = System::Drawing::Point(0, 0);
+		this->menuStrip1->Name = L"menuStrip1";
+		this->menuStrip1->Size = System::Drawing::Size(728, 24);
+		this->menuStrip1->TabIndex = 2;
+		this->menuStrip1->Text = L"menuStrip1";
+		// 
+		// îÏðîãðàììåToolStripMenuItem
+		// 
+		this->îÏðîãðàììåToolStripMenuItem->Name = L"îÏðîãðàììåToolStripMenuItem";
+		this->îÏðîãðàììåToolStripMenuItem->Size = System::Drawing::Size(94, 20);
+		this->îÏðîãðàììåToolStripMenuItem->Text = L"Î ïðîãðàììå";
+		// 
+		// openFileDialog1
+		// 
+		this->openFileDialog1->FileName = L"openFileDialog1";
+		// 
 		// MyForm
 		// 
 		this->AcceptButton = this->button1;
 		this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 		this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-		this->ClientSize = System::Drawing::Size(728, 476);
+		this->ClientSize = System::Drawing::Size(728, 560);
 		this->Controls->Add(this->toolsGroupBox);
 		this->Controls->Add(this->pictureGroupBox);
+		this->Controls->Add(this->menuStrip1);
+		this->MainMenuStrip = this->menuStrip1;
 		this->Name = L"MyForm";
 		this->Text = L"3D";
 		this->pictureGroupBox->ResumeLayout(false);
 		(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox))->EndInit();
 		this->toolsGroupBox->ResumeLayout(false);
 		this->toolsGroupBox->PerformLayout();
+		this->menuStrip1->ResumeLayout(false);
+		this->menuStrip1->PerformLayout();
 		this->ResumeLayout(false);
+		this->PerformLayout();
 
 	}
 #pragma endregion
@@ -491,6 +547,15 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 		return;
 	}
 
+
+}
+private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
+	
+	if (openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+	{
+		controller->fileName = openFileDialog1->FileName;
+		controller->OnFormLoad();
+	}
 
 }
 };

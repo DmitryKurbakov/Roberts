@@ -33,7 +33,7 @@ void MyFormController::OnFormLoad()
 	//mod->tet = fh->GetModel("hexahedron.txt");
 	//mod->tet = fh->GetModel("icosahedron.txt");
 	//mod->tet = fh->GetModel("octahedron.txt");
-	mod->tet = fh->GetModel("dodecahedron.txt");
+	mod->tet = fh->GetModel(fileName);
 
 	resultBitmap = mod->DrawTetrahedron(resultBitmap, mode, z);
 
