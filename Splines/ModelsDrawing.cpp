@@ -1,8 +1,11 @@
 #include "ModelsDrawing.h"
 
-ModelsDrawing::ModelsDrawing()
+ModelsDrawing::ModelsDrawing(int x0, int y0)
 {
 	//tet = gcnew Model();
+	
+	this->x0 = x0;
+	this->y0 = y0;
 }
 
 
@@ -19,14 +22,16 @@ Bitmap ^ ModelsDrawing::DrawTetrahedron(Bitmap^ bm, int mode, float z)
 	//tt = tet->GetRotationMatrix(tt, 2, 0.3);
 	List<PointF>^ points;
 	
+	modVertixMatrix = GetCenteringModelmatrix(tet->transVertixMatrix);
+
 	if (mode == 0)
 	{
-		points = GetListOfTetrahedronPoints(tet->GetParallelProjectionMatrix(tet->transVertixMatrix));
+		points = GetListOfTetrahedronPoints(tet->GetParallelProjectionMatrix(modVertixMatrix));
 	}
 
 	else if (mode == 1)
 	{
-		points = GetListOfTetrahedronPoints(tet->GetParallelProjectionPoints(tet->GetSinglePointPerspectiveProjectionMatrix(tet->transVertixMatrix, z)));
+		points = GetListOfTetrahedronPoints(tet->GetSinglePointPerspectiveProjectionMatrix(modVertixMatrix, z));
 	}
 	
 
@@ -107,3 +112,17 @@ List<PointF>^ ModelsDrawing::GetListOfTetrahedronPoints(array<float, 2>^ m)
 
 	return p;
 }
+
+array<float, 2>^ ModelsDrawing::GetCenteringModelmatrix(array<float, 2>^ m)
+{
+	modVertixMatrix = gcnew array<float, 2>(m->GetLength(0), m->GetLength(1));
+
+	for (size_t i = 0; i < m->GetLength(0); i++)
+	{
+		modVertixMatrix[i, 0] += m[i, 0] + x0;
+		modVertixMatrix[i, 1] += m[i, 1] + y0;
+	}
+
+	return modVertixMatrix;
+}
+

@@ -34,6 +34,6 @@ public:
 	void OnRotation(int val, bool d);
 	void OnScaling(int val, bool d);
 
-
+	
 };
 

@@ -17,12 +17,18 @@ public:
 
 	Model^ tet;
 
-	ModelsDrawing();
+	int x0, y0;
+
+	array<float, 2>^ modVertixMatrix;
+
+	ModelsDrawing(int x0, int y0);
 	~ModelsDrawing();
 
 	Bitmap^ DrawTetrahedron(Bitmap^ bm, int mode, float z);
 	//Bitmap^ DrawTetrahedronUsingPerspectiveProjection(Bitmap^ bm);
 
 	List<PointF>^ GetListOfTetrahedronPoints(array<float, 2>^ m); 
+
+	array<float, 2>^ GetCenteringModelmatrix(array<float, 2>^ m);
 };
 

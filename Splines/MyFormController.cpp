@@ -7,12 +7,15 @@ MyFormController::MyFormController(PictureBox^ p)
 	this->pictureBox = p;
 	this->pictureBox->Image = gcnew Bitmap(1920, 1080);
 
-	this->mod = gcnew ModelsDrawing();
+
+	this->mod = gcnew ModelsDrawing(p->Width / 2, p->Height / 2);
 
 	cursor.X = 250;
 	cursor.Y = 200;
 
 	fh = gcnew FilesHandler();
+
+	
 }
 
 
@@ -143,3 +146,4 @@ void MyFormController::OnScaling(int val, bool d)
 	pictureBox->Image = resultBitmap;
 	delete inputBitmap;
 }
+
