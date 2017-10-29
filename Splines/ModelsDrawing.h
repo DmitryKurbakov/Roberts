@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Algorithms.h"
-#include "Tetrahedron.h"
+#include "Model.h"
 
 using namespace System::Drawing;
 using namespace System::Collections::Generic;
@@ -15,7 +15,7 @@ ref class ModelsDrawing :
 
 public:
 
-	Tetrahedron^ tet;
+	Model^ tet;
 
 	ModelsDrawing();
 	~ModelsDrawing();

@@ -12,6 +12,7 @@ MyFormController::MyFormController(PictureBox^ p)
 	cursor.X = 250;
 	cursor.Y = 200;
 
+	fh = gcnew FilesHandler();
 }
 
 
@@ -24,6 +25,8 @@ void MyFormController::OnFormLoad()
 
 	//Bitmap^ inputBitmap = gcnew Bitmap(pictureBox->Image);
 	Bitmap^ resultBitmap = gcnew Bitmap(pictureBox->Image->Width, pictureBox->Image->Height);
+
+	mod->tet = fh->GetModel("tetrahedron.txt");
 
 	resultBitmap = mod->DrawTetrahedron(resultBitmap, mode, z);
 

@@ -7,7 +7,7 @@
 using namespace System;
 using namespace System::Collections::Generic;
 
-ref class Tetrahedron
+ref class Model
 {
 public:
 
@@ -17,10 +17,10 @@ public:
 	array<int, 2>^ faceMatrix;
 	array<float, 2>^ transVertixMatrix;
 
-	Tetrahedron(array<float, 2>^ t, array<int, 2>^ f);
+	Model(array<float, 2>^ t, array<int, 2>^ f);
 
-	Tetrahedron();
-	~Tetrahedron();
+	Model();
+	~Model();
 
 	void MakeVertixMatrix();
 	void MakeFaceMatrix();

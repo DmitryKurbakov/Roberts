@@ -135,26 +135,31 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Algorithms.cpp" />
+    <ClCompile Include="FilesHandler.cpp" />
     <ClCompile Include="Marker.cpp" />
     <ClCompile Include="ModelsDrawing.cpp" />
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="MyFormController.cpp" />
-    <ClCompile Include="Tetrahedron.cpp" />
+    <ClCompile Include="Model.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Algorithms.h" />
+    <ClInclude Include="FilesHandler.h" />
     <ClInclude Include="Marker.h" />
     <ClInclude Include="ModelsDrawing.h" />
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="MyFormController.h" />
-    <ClInclude Include="Tetrahedron.h" />
+    <ClInclude Include="Model.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MyForm.resx">
       <DependentUpon>MyForm.h</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="tetrahedron.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

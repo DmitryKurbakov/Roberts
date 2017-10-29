@@ -2,7 +2,7 @@
 
 ModelsDrawing::ModelsDrawing()
 {
-	tet = gcnew Tetrahedron();
+	//tet = gcnew Model();
 }
 
 

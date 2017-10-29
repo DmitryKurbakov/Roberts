@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ModelsDrawing.h"
+#include "FilesHandler.h"
 
 using namespace System::Windows::Forms;
 
@@ -14,6 +15,8 @@ public:
 	ModelsDrawing^ mod;
 
 	Point cursor;
+
+	FilesHandler^ fh;
 
 	int mode = 0;
 	float z = -40;
@@ -30,5 +33,7 @@ public:
 	void OnScroll(int val, bool d);
 	void OnRotation(int val, bool d);
 	void OnScaling(int val, bool d);
+
+
 };
 

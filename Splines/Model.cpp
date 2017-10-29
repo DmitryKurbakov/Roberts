@@ -1,16 +1,16 @@
-#include "Tetrahedron.h"
+#include "Model.h"
 
 
 
-Tetrahedron::Tetrahedron(array<float, 2>^ t, array<int, 2>^ f)
+Model::Model(array<float, 2>^ t, array<int, 2>^ f)
 {
 	this->transVertixMatrix = t;
 	this->faceMatrix = f;
 
-	marker = gcnew Marker(250, 200);
+	//marker = gcnew Marker(250, 200);
 }
 
-Tetrahedron::Tetrahedron()
+Model::Model()
 {
 
 	vertixMatrix = gcnew array<float, 2>(6, 3) {
@@ -49,11 +49,11 @@ Tetrahedron::Tetrahedron()
 }
 
 
-Tetrahedron::~Tetrahedron()
+Model::~Model()
 {
 }
 
-void Tetrahedron::MakeVertixMatrix()
+void Model::MakeVertixMatrix()
 {
 
 	//vertixMatrix = {{0, 0, 50}};
@@ -92,7 +92,7 @@ void Tetrahedron::MakeVertixMatrix()
 
 }
 
-void Tetrahedron::MakeFaceMatrix()
+void Model::MakeFaceMatrix()
 {
 
 
@@ -165,7 +165,7 @@ array<float, 2>^ MatrixMultiply(array<float, 2>^ a, array<float, 2>^ b)
 
 }
 
-array<float, 2>^ Tetrahedron::HomogeneousCoordinateMethod(array<float, 2>^ m)
+array<float, 2>^ Model::HomogeneousCoordinateMethod(array<float, 2>^ m)
 {
 	array<float, 2>^ result = gcnew array<float, 2>(6, 4) {
 
@@ -183,7 +183,7 @@ array<float, 2>^ Tetrahedron::HomogeneousCoordinateMethod(array<float, 2>^ m)
 	return result;
 }
 
-array<float, 2>^ Tetrahedron::GetRotationMatrix(array<float, 2>^ m, int axis, float angle)
+array<float, 2>^ Model::GetRotationMatrix(array<float, 2>^ m, int axis, float angle)
 {
 	array<float, 2>^ t;
 	array<float, 2>^ result;
@@ -240,7 +240,7 @@ array<float, 2>^ Tetrahedron::GetRotationMatrix(array<float, 2>^ m, int axis, fl
 	return MatrixMultiply(m, t);
 }
 
-array<float, 2>^ Tetrahedron::GetShiftsMatrix(array<float, 2>^ m, int dx, int dy, int dz)
+array<float, 2>^ Model::GetShiftsMatrix(array<float, 2>^ m, int dx, int dy, int dz)
 {
 
 	array<float, 2>^ t = gcnew array<float, 2>(4, 4) {
@@ -255,7 +255,7 @@ array<float, 2>^ Tetrahedron::GetShiftsMatrix(array<float, 2>^ m, int dx, int dy
 	return MatrixMultiply(m, t);
 }
 
-array<float, 2>^ Tetrahedron::GetScalingMatrix(array<float, 2>^ m, float p, float q, float r, float s)
+array<float, 2>^ Model::GetScalingMatrix(array<float, 2>^ m, float p, float q, float r, float s)
 {
 	array<float, 2>^ t = gcnew array<float, 2>(4, 4) {
 
@@ -269,7 +269,7 @@ array<float, 2>^ Tetrahedron::GetScalingMatrix(array<float, 2>^ m, float p, floa
 	return MatrixMultiply(m, t);
 }
 
-array<float, 2>^ Tetrahedron::GetParallelProjectionMatrix(array<float, 2>^ m)
+array<float, 2>^ Model::GetParallelProjectionMatrix(array<float, 2>^ m)
 {
 	array<float, 2>^ t = gcnew array<float, 2>(4, 4) {
 
@@ -282,7 +282,7 @@ array<float, 2>^ Tetrahedron::GetParallelProjectionMatrix(array<float, 2>^ m)
 	return MatrixMultiply(m, t);
 }
 
-array<float, 2>^ Tetrahedron::GetSinglePointPerspectiveProjectionMatrix(array<float, 2>^ m, float z)
+array<float, 2>^ Model::GetSinglePointPerspectiveProjectionMatrix(array<float, 2>^ m, float z)
 {
 	array<float, 2>^ t = gcnew array<float, 2>(4, 4) {
 
@@ -297,7 +297,7 @@ array<float, 2>^ Tetrahedron::GetSinglePointPerspectiveProjectionMatrix(array<fl
 	return t;
 }
 
-array<float, 2>^ Tetrahedron::GetParallelProjectionPoints(array<float, 2>^ m)
+array<float, 2>^ Model::GetParallelProjectionPoints(array<float, 2>^ m)
 {
 	for (int i = 0; i < m->GetLength(0); i++)
 	{
