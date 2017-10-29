@@ -19,7 +19,7 @@ public:
 	FilesHandler^ fh;
 
 	int mode = 0;
-	float z = -40;
+	float z = 150;
 
 	//int delta = 500;
 

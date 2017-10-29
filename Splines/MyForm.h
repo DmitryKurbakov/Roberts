@@ -215,7 +215,7 @@ private:
 		this->z0TextBox->Name = L"z0TextBox";
 		this->z0TextBox->Size = System::Drawing::Size(39, 20);
 		this->z0TextBox->TabIndex = 36;
-		this->z0TextBox->Text = L"-10";
+		this->z0TextBox->Text = L"150";
 		// 
 		// perspectiveProjectionRadioButton
 		// 
