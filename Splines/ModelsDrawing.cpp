@@ -47,10 +47,10 @@ Bitmap ^ ModelsDrawing::DrawTetrahedron(Bitmap^ bm, int mode, float z)
 
 	for (int i = 0; i < r->GetLength(0); i++)
 	{
-		for (int j = 0; j < 3; j++)
+		for (int j = 0; j < r->GetLength(1); j++)
 		{
 
-			if (j == 2)
+			if (j == r->GetLength(1) - 1)
 			{
 				gr->DrawLine(p, points[r[i, j]].X, points[r[i, j]].Y, points[r[i, 0]].X, points[r[i, 0]].Y);
 			}

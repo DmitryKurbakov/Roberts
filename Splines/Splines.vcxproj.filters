@@ -69,5 +69,17 @@
     <Text Include="tetrahedron.txt">
       <Filter>Файлы ресурсов</Filter>
     </Text>
+    <Text Include="icosahedron.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
+    <Text Include="hexahedron.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
+    <Text Include="octahedron.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
+    <Text Include="dodecahedron.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
   </ItemGroup>
 </Project>

@@ -34,6 +34,7 @@ Model ^ FilesHandler::GetModel(String ^ fileName)
 		array<String^>^ values;
 
 
+		//VERTIX
 		int v = Int32::Parse(strings[0]);
 
 		array<float, 2>^ t = gcnew array<float, 2>(v, 4);
@@ -42,11 +43,13 @@ Model ^ FilesHandler::GetModel(String ^ fileName)
 		{
 			for (size_t j = 0; j < t->GetLength(1) - 1; j++)
 			{
-				t[i, j] = Int32::Parse(strings[i + 1]->Split(' ')[j]);
+				t[i, j] = (float)Double::Parse(strings[i + 1]->Split(' ')[j]);
 			}
 			t[i, 3] = 1;
 		}
 
+
+		//FACES
 		int f = ((v == 4) || (v == 6) || (v == 12)) ? 3 : (v == 8) ? 4 : 5;
 
 		array<int, 2>^ faceMatrix = gcnew array<int, 2>(Int32::Parse(strings[v + 1]), f);

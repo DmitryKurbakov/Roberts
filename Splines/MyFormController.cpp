@@ -29,7 +29,11 @@ void MyFormController::OnFormLoad()
 	//Bitmap^ inputBitmap = gcnew Bitmap(pictureBox->Image);
 	Bitmap^ resultBitmap = gcnew Bitmap(pictureBox->Image->Width, pictureBox->Image->Height);
 
-	mod->tet = fh->GetModel("tetrahedron.txt");
+	//mod->tet = fh->GetModel("tetrahedron.txt");
+	//mod->tet = fh->GetModel("hexahedron.txt");
+	//mod->tet = fh->GetModel("icosahedron.txt");
+	//mod->tet = fh->GetModel("octahedron.txt");
+	mod->tet = fh->GetModel("dodecahedron.txt");
 
 	resultBitmap = mod->DrawTetrahedron(resultBitmap, mode, z);
 

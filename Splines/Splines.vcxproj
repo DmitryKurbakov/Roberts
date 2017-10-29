@@ -159,6 +159,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Text Include="dodecahedron.txt" />
+    <Text Include="hexahedron.txt" />
+    <Text Include="icosahedron.txt" />
+    <Text Include="octahedron.txt" />
     <Text Include="tetrahedron.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -144,15 +144,15 @@ void Model::MakeFaceMatrix()
 array<float, 2>^ MatrixMultiply(array<float, 2>^ a, array<float, 2>^ b)
 {
 
-	array<float, 2>^ r = gcnew array<float, 2>(4, 4);
+	array<float, 2>^ r = gcnew array<float, 2>(a->GetLength(0), b->GetLength(1));
 
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < a->GetLength(0); i++)
 	{
 
-		for (int j = 0; j < 4; j++)
+		for (int j = 0; j < b->GetLength(1); j++)
 		{
 
-			for (int k = 0; k < 4; k++)
+			for (int k = 0; k < b->GetLength(0); k++)
 			{
 				r[i, j] += a[i, k] * b[k, j];
 			}
