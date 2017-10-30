@@ -38,5 +38,9 @@ public:
 	//array<float, 2>^ MatrixMultiply(array<float, 2>^ a, array<float, 2>^ b);
 
 	
+	array<int, 2>^ RobertsAlgorithm(array<float, 2>^ v, array<int, 2>^ f);
+	array<float, 2>^ GetBodyMatrix(array<float, 2>^ v, array<int, 2>^ f);
+	array<float, 2>^ GetFixedMatrix(array<float, 2>^ b, array<float>^ m);
+	array<int, 2>^ CheckFaces(array<float, 2>^ b);
 };
 

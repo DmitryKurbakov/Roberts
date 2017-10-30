@@ -165,6 +165,25 @@ array<float, 2>^ MatrixMultiply(array<float, 2>^ a, array<float, 2>^ b)
 
 }
 
+array<float>^ VectorMatrixMultiply(array<float>^ a, array<float, 2>^ b)
+{
+	array<float>^ r = gcnew array<float>(b->GetLength(1));
+
+	
+	for (int i = 0; i < b->GetLength(0); i++)
+	{
+
+		for (int j = 0; j < a->GetLength(0); j++)
+		{
+			r[i] += a[j] * b[i, j];
+		}
+	}
+	
+	
+
+	return r;
+}
+
 array<float, 2>^ Model::HomogeneousCoordinateMethod(array<float, 2>^ m)
 {
 	array<float, 2>^ result = gcnew array<float, 2>(6, 4) {
@@ -307,6 +326,121 @@ array<float, 2>^ Model::GetSinglePointPerspectiveProjectionPoints(array<float, 2
 	}
 
 	return m;
+}
+
+array<int, 2>^ Model::RobertsAlgorithm(array<float, 2>^ v, array<int, 2>^ f)
+{
+	array<float, 2>^ bodyMatrix = GetBodyMatrix(v, f);
+
+	array<float>^ testVector = gcnew array<float>(4){1, 1, 1, 1};
+
+	//bodyMatrix = GetRotationMatrix(bodyMatrix, 1, 100);
+
+	bodyMatrix = GetFixedMatrix(bodyMatrix, VectorMatrixMultiply(testVector, bodyMatrix));
+
+	return CheckFaces(bodyMatrix);
+
+
+}
+
+array<float, 2>^ Model::GetBodyMatrix(array<float, 2>^ v, array<int, 2>^ f)
+{
+	array<float, 2>^ res = gcnew array<float, 2>(4, f->GetLength(0));
+
+	array<float>^ p1 = gcnew array<float>(3);
+	array<float>^ p2 = gcnew array<float>(3);
+	array<float>^ p3 = gcnew array<float>(3);
+
+	for (size_t i = 0; i < f->GetLength(0); i++)
+	{
+		
+		p1[0] = v[f[i, 0], 0];
+		p1[1] = v[f[i, 0], 1];
+		p1[2] = v[f[i, 0], 2];
+		
+		p2[0] = v[f[i, 1], 0];
+		p2[1] = v[f[i, 1], 1];
+		p2[2] = v[f[i, 1], 2];
+
+		p3[0] = v[f[i, 2], 0];
+		p3[1] = v[f[i, 2], 1];
+		p3[2] = v[f[i, 2], 2];
+
+		float A, B, C, D;
+
+		A = p1[1]*(p2[2] - p3[2]) + p2[1]*(p3[2] - p1[2]) + p3[1]*(p1[2] - p2[2]);
+		B = p1[2]*(p2[0] - p3[0]) + p2[2]*(p3[0] - p1[0]) + p3[2]*(p1[0] - p2[0]);
+		C = p1[0]*(p2[1] - p3[1]) + p2[0]*(p3[1] - p1[1]) + p2[0]*(p1[1] - p2[1]);
+		D = -(p1[0] * (p2[1] * p3[2] - p3[1] * p2[2]) + p2[0] * (p3[1] * p1[2] - p1[1] * p3[2]) + p3[0] * (p1[1] * p2[2] - p2[1] * p1[2]));
+
+		res[0, i] = A;
+		res[1, i] = B;
+		res[2, i] = C;
+		res[3, i] = D;
+	}
+
+	return res;
+}
+
+array<float, 2>^ Model::GetFixedMatrix(array<float, 2>^ b, array<float>^ m)
+{
+	for (size_t k = 0; k < m->GetLength(0); k++)
+	{
+		if (m[k] > 0)
+		{			
+			for (size_t j = 0; j < b->GetLength(0); j++)
+			{
+				b[j, k] *= -1;
+			}			
+		}
+		
+	}
+
+	return b;
+	
+}
+
+array<int, 2>^ Model::CheckFaces(array<float, 2>^ b)
+{
+	
+
+	System::Collections::Generic::List<System::Collections::Generic::List<int>^>^ temp = gcnew System::Collections::Generic::List<System::Collections::Generic::List<int>^>();
+
+
+	array<float>^ testVector = gcnew array<float>(4) { 1, 1, -1000000, 1 };
+
+	array<float>^ resVector = VectorMatrixMultiply(testVector, b);
+
+	for (size_t k = 0; k < resVector->GetLength(0); k++)
+	{
+		if (resVector[k] >= 0)
+		{
+			System::Collections::Generic::List<int>^ sTemp = gcnew System::Collections::Generic::List<int>();
+
+			for (size_t j = 0; j < faceMatrix->GetLength(1); j++)
+			{
+				sTemp->Add(faceMatrix[k, j]);
+			}
+
+			temp->Add(sTemp);
+		}
+	}
+
+
+	array<int, 2>^ fm = gcnew array<int, 2>(temp->Count, faceMatrix->GetLength(1));
+
+	for (size_t i = 0; i < fm->GetLength(0); i++)
+	{
+		System::Collections::Generic::List<int>^ sTemp = temp[i];
+
+		for (size_t j = 0; j < fm->GetLength(1); j++)
+		{
+			fm[i, j] = sTemp[j];
+		}
+	}
+
+	delete temp;
+	return fm;
 }
 
 

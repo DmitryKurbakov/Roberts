@@ -43,7 +43,7 @@ Bitmap ^ ModelsDrawing::DrawTetrahedron(Bitmap^ bm, int mode, float z)
 	}
 	
 
-	array<int, 2>^ r = tet->faceMatrix;
+	array<int, 2>^ r = tet->RobertsAlgorithm(tet->transVertixMatrix, tet->faceMatrix);
 
 	for (int i = 0; i < r->GetLength(0); i++)
 	{

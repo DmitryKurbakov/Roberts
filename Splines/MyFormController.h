@@ -20,7 +20,7 @@ public:
 
 	int mode = 0;
 	float z = 150;
-	String^ fileName = "tetrahedron.txt";
+	String^ fileName = "hexahedron.txt";
 	//int delta = 500;
 
 	MyFormController(PictureBox^ p);
