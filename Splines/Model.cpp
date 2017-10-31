@@ -332,7 +332,7 @@ array<int, 2>^ Model::RobertsAlgorithm(array<float, 2>^ v, array<int, 2>^ f)
 {
 	array<float, 2>^ bodyMatrix = GetBodyMatrix(v, f);
 
-	array<float>^ testVector = gcnew array<float>(4){1, 1, 1, 1};
+	array<float>^ testVector = gcnew array<float>(4){10, 10, 10, 1};
 
 	//bodyMatrix = GetRotationMatrix(bodyMatrix, 1, 100);
 
@@ -407,7 +407,7 @@ array<int, 2>^ Model::CheckFaces(array<float, 2>^ b)
 	System::Collections::Generic::List<System::Collections::Generic::List<int>^>^ temp = gcnew System::Collections::Generic::List<System::Collections::Generic::List<int>^>();
 
 
-	array<float>^ testVector = gcnew array<float>(4) { 1, 1, -1000000, 1 };
+	array<float>^ testVector = gcnew array<float>(4) { 0, 0, 1000000, 0 };
 
 	array<float>^ resVector = VectorMatrixMultiply(testVector, b);
 
@@ -442,10 +442,4 @@ array<int, 2>^ Model::CheckFaces(array<float, 2>^ b)
 	delete temp;
 	return fm;
 }
-
-
-
-
-
-
 
