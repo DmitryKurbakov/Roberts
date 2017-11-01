@@ -167,7 +167,23 @@ array<float, 2>^ MatrixMultiply(array<float, 2>^ a, array<float, 2>^ b)
 
 array<float>^ VectorMatrixMultiply(array<float>^ a, array<float, 2>^ b)
 {
-	array<float>^ r = gcnew array<float>(6){
+	//array<float>^ r = gcnew array<float>(b->GetLength(1));
+
+	/*for (size_t i = 0; i < b->GetLength(1); i++)
+	{
+		
+	}*/
+
+	/*for (int i = 0; i < b->GetLength(0); i++)
+	{
+		res[i] = 0;
+		for (int j = 0; j < 4; j++)
+		{
+			res[i] += a[j] * b[j, i];
+		}
+	}*/
+	/*
+	{
 		
 		a[0] * b[0, 0] + a[1] * b[1, 0] + a[2] * b[2, 0] + a[3] * b[3, 0],
 		a[0] * b[0, 1] + a[1] * b[1, 1] + a[2] * b[2, 1] + a[3] * b[3, 1],
@@ -176,16 +192,17 @@ array<float>^ VectorMatrixMultiply(array<float>^ a, array<float, 2>^ b)
 		a[0] * b[0, 4] + a[1] * b[1, 4] + a[2] * b[2, 4] + a[3] * b[3, 4],
 		a[0] * b[0, 5] + a[1] * b[1, 5] + a[2] * b[2, 5] + a[3] * b[3, 5],
 	
-	};
+	};*/
 
-	//a = gcnew  array<float>(4) { 0, 0, 1, 0 };
-	//b = gcnew array<float, 2>(4, 6)
-	//{
-	//	{2, -2, 0, 0, 0, 0},
-	//	{ 0, 0, 2, -2, 0, 0 },
-	//	{ 0, 0, 0, 0, 2, -2 },
-	//	{ -1, -1, -1, -1, -1, -1 },
-	//};
+
+	/*a = gcnew  array<float>(4) { 0, 0, 1, 0 };
+	b = gcnew array<float, 2>(4, 6)
+	{
+		{2, -2, 0, 0, 0, 0},
+		{ 0, 0, 2, -2, 0, 0 },
+		{ 0, 0, 0, 0, 2, -2 },
+		{ -1, -1, -1, -1, -1, -1 },
+	};*/
 
 	/*for (int i = 0; i < b->GetLength(0); i++)
 	{
@@ -195,6 +212,18 @@ array<float>^ VectorMatrixMultiply(array<float>^ a, array<float, 2>^ b)
 			r[i] += a[j] * b[i, j];
 		}
 	}	*/
+
+
+	array<float>^ r = gcnew array<float>(b->GetLength(1));
+
+	for (int i = 0; i < b->GetLength(1); i++)
+	{
+		r[i] = 0;
+		for (int j = 0; j < 4; j++)
+		{
+			r[i] += a[j] * b[j, i];
+		}
+	}
 
 	return r;
 }

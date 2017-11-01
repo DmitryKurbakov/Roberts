@@ -13,7 +13,7 @@ ModelsDrawing::~ModelsDrawing()
 {
 }
 
-Bitmap ^ ModelsDrawing::DrawTetrahedron(Bitmap^ bm, int mode, float z)
+Bitmap ^ ModelsDrawing::DrawTetrahedron(Bitmap^ bm, int mode, float z, bool del)
 {
 	
 	Graphics^ gr = Graphics::FromImage(bm);
@@ -43,7 +43,9 @@ Bitmap ^ ModelsDrawing::DrawTetrahedron(Bitmap^ bm, int mode, float z)
 	}
 	
 
-	array<int, 2>^ r = tet->RobertsAlgorithm(tet->transVertixMatrix, tet->faceMatrix);
+	array<int, 2>^ r = del ? 
+		tet->RobertsAlgorithm(tet->transVertixMatrix, tet->faceMatrix)
+		: tet->faceMatrix;
 
 	//array<int, 2>^ r = tet->faceMatrix;
 

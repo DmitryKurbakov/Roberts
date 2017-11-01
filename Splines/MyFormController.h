@@ -19,7 +19,9 @@ public:
 	FilesHandler^ fh;
 
 	int mode = 0;
+	bool del = false;
 	float z = 150;
+
 	String^ fileName = "hexahedron.txt";
 	//int delta = 500;
 

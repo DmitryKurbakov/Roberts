@@ -35,7 +35,7 @@ void MyFormController::OnFormLoad()
 	//mod->tet = fh->GetModel("octahedron.txt");
 	mod->tet = fh->GetModel(fileName);
 
-	resultBitmap = mod->DrawTetrahedron(resultBitmap, mode, z);
+	resultBitmap = mod->DrawTetrahedron(resultBitmap, mode, z, del);
 
 	delete pictureBox->Image;
 	pictureBox->Image = resultBitmap;
@@ -65,7 +65,7 @@ void MyFormController::OnMarkerMouseMove(Point p)
 
 			0);
 
-		resultBitmap = mod->DrawTetrahedron(resultBitmap, mode, z);
+		resultBitmap = mod->DrawTetrahedron(resultBitmap, mode, z, del);
 	}
 	
 	cursor = p;
@@ -93,7 +93,7 @@ void MyFormController::OnScroll(int val, bool d)
 		val == 2 ? delta : 0
 	);
 
-	resultBitmap = mod->DrawTetrahedron(resultBitmap, mode, z);
+	resultBitmap = mod->DrawTetrahedron(resultBitmap, mode, z, del);
 
 	//delta = d;
 
@@ -116,7 +116,7 @@ void MyFormController::OnRotation(int val, bool d)
 		val,   PI * delta / 180
 	);
 
-	resultBitmap = mod->DrawTetrahedron(resultBitmap, mode, z);
+	resultBitmap = mod->DrawTetrahedron(resultBitmap, mode, z, del);
 
 	//delta = d;
 
@@ -141,7 +141,7 @@ void MyFormController::OnScaling(int val, bool d)
 		1
 	);
 
-	resultBitmap = mod->DrawTetrahedron(resultBitmap, mode, z);
+	resultBitmap = mod->DrawTetrahedron(resultBitmap, mode, z, del);
 
 	//delta = d;
 

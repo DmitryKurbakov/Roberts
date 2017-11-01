@@ -83,6 +83,7 @@ private: System::Windows::Forms::Button^  button2;
 private: System::Windows::Forms::MenuStrip^  menuStrip1;
 private: System::Windows::Forms::ToolStripMenuItem^  îÏðîãðàììåToolStripMenuItem;
 private: System::Windows::Forms::OpenFileDialog^  openFileDialog1;
+private: System::Windows::Forms::CheckBox^  checkBox1;
 
 
 
@@ -133,6 +134,7 @@ private:
 		this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 		this->îÏðîãðàììåToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 		this->openFileDialog1 = (gcnew System::Windows::Forms::OpenFileDialog());
+		this->checkBox1 = (gcnew System::Windows::Forms::CheckBox());
 		this->pictureGroupBox->SuspendLayout();
 		(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox))->BeginInit();
 		this->toolsGroupBox->SuspendLayout();
@@ -166,6 +168,7 @@ private:
 		// 
 		// toolsGroupBox
 		// 
+		this->toolsGroupBox->Controls->Add(this->checkBox1);
 		this->toolsGroupBox->Controls->Add(this->label14);
 		this->toolsGroupBox->Controls->Add(this->button2);
 		this->toolsGroupBox->Controls->Add(this->button1);
@@ -490,6 +493,17 @@ private:
 		// 
 		this->openFileDialog1->FileName = L"openFileDialog1";
 		// 
+		// checkBox1
+		// 
+		this->checkBox1->AutoSize = true;
+		this->checkBox1->Location = System::Drawing::Point(6, 352);
+		this->checkBox1->Name = L"checkBox1";
+		this->checkBox1->Size = System::Drawing::Size(130, 17);
+		this->checkBox1->TabIndex = 41;
+		this->checkBox1->Text = L"Óäàëèòü íåâèäèìûå";
+		this->checkBox1->UseVisualStyleBackColor = true;
+		this->checkBox1->CheckedChanged += gcnew System::EventHandler(this, &MyForm::checkBox1_CheckedChanged);
+		// 
 		// MyForm
 		// 
 		this->AcceptButton = this->button1;
@@ -557,6 +571,17 @@ private: System::Void button2_Click(System::Object^  sender, System::EventArgs^ 
 		controller->OnFormLoad();
 	}
 
+}
+private: System::Void checkBox1_CheckedChanged(System::Object^  sender, System::EventArgs^  e) {
+
+	controller->del = checkBox1->Checked;
+	
+	Bitmap^ resultBitmap = gcnew Bitmap(pictureBox->Image->Width, pictureBox->Image->Height);
+
+	resultBitmap = controller->mod->DrawTetrahedron(resultBitmap, controller->mode, controller->z, controller->del);
+
+	delete pictureBox->Image;
+	pictureBox->Image = resultBitmap;
 }
 };
 
