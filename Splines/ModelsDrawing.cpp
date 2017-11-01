@@ -22,6 +22,9 @@ Bitmap ^ ModelsDrawing::DrawTetrahedron(Bitmap^ bm, int mode, float z, bool del)
 	//tt = tet->GetRotationMatrix(tt, 2, 0.3);
 	List<PointF>^ points;
 	
+	array<int, 2>^ r = del ?
+		tet->RobertsAlgorithm(tet->transVertixMatrix, tet->faceMatrix)
+		: tet->faceMatrix;
 	
 	if (mode == 0)
 	{
@@ -43,9 +46,7 @@ Bitmap ^ ModelsDrawing::DrawTetrahedron(Bitmap^ bm, int mode, float z, bool del)
 	}
 	
 
-	array<int, 2>^ r = del ? 
-		tet->RobertsAlgorithm(tet->transVertixMatrix, tet->faceMatrix)
-		: tet->faceMatrix;
+	
 
 	//array<int, 2>^ r = tet->faceMatrix;
 
