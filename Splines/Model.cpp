@@ -167,19 +167,34 @@ array<float, 2>^ MatrixMultiply(array<float, 2>^ a, array<float, 2>^ b)
 
 array<float>^ VectorMatrixMultiply(array<float>^ a, array<float, 2>^ b)
 {
-	array<float>^ r = gcnew array<float>(b->GetLength(1));
-
+	array<float>^ r = gcnew array<float>(6){
+		
+		a[0] * b[0, 0] + a[1] * b[1, 0] + a[2] * b[2, 0] + a[3] * b[3, 0],
+		a[0] * b[0, 1] + a[1] * b[1, 1] + a[2] * b[2, 1] + a[3] * b[3, 1],
+		a[0] * b[0, 2] + a[1] * b[1, 2] + a[2] * b[2, 2] + a[3] * b[3, 2],
+		a[0] * b[0, 3] + a[1] * b[1, 3] + a[2] * b[2, 3] + a[3] * b[3, 3],
+		a[0] * b[0, 4] + a[1] * b[1, 4] + a[2] * b[2, 4] + a[3] * b[3, 4],
+		a[0] * b[0, 5] + a[1] * b[1, 5] + a[2] * b[2, 5] + a[3] * b[3, 5],
 	
-	for (int i = 0; i < b->GetLength(0); i++)
+	};
+
+	//a = gcnew  array<float>(4) { 0, 0, 1, 0 };
+	//b = gcnew array<float, 2>(4, 6)
+	//{
+	//	{2, -2, 0, 0, 0, 0},
+	//	{ 0, 0, 2, -2, 0, 0 },
+	//	{ 0, 0, 0, 0, 2, -2 },
+	//	{ -1, -1, -1, -1, -1, -1 },
+	//};
+
+	/*for (int i = 0; i < b->GetLength(0); i++)
 	{
 
 		for (int j = 0; j < a->GetLength(0); j++)
 		{
 			r[i] += a[j] * b[i, j];
 		}
-	}
-	
-	
+	}	*/
 
 	return r;
 }
@@ -332,7 +347,7 @@ array<int, 2>^ Model::RobertsAlgorithm(array<float, 2>^ v, array<int, 2>^ f)
 {
 	array<float, 2>^ bodyMatrix = GetBodyMatrix(v, f);
 
-	array<float>^ testVector = gcnew array<float>(4){10, 10, 10, 1};
+	array<float>^ testVector = gcnew array<float>(4){1, 1, 1, 1};
 
 	//bodyMatrix = GetRotationMatrix(bodyMatrix, 1, 100);
 
@@ -407,7 +422,7 @@ array<int, 2>^ Model::CheckFaces(array<float, 2>^ b)
 	System::Collections::Generic::List<System::Collections::Generic::List<int>^>^ temp = gcnew System::Collections::Generic::List<System::Collections::Generic::List<int>^>();
 
 
-	array<float>^ testVector = gcnew array<float>(4) { 0, 0, 1000000, 0 };
+	array<float>^ testVector = gcnew array<float>(4) { 0, 0, 1, 0 };
 
 	array<float>^ resVector = VectorMatrixMultiply(testVector, b);
 
