@@ -103,6 +103,7 @@ private:
 		this->pictureGroupBox = (gcnew System::Windows::Forms::GroupBox());
 		this->pictureBox = (gcnew System::Windows::Forms::PictureBox());
 		this->toolsGroupBox = (gcnew System::Windows::Forms::GroupBox());
+		this->checkBox1 = (gcnew System::Windows::Forms::CheckBox());
 		this->label14 = (gcnew System::Windows::Forms::Label());
 		this->button2 = (gcnew System::Windows::Forms::Button());
 		this->button1 = (gcnew System::Windows::Forms::Button());
@@ -134,7 +135,6 @@ private:
 		this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 		this->оПрограммеToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 		this->openFileDialog1 = (gcnew System::Windows::Forms::OpenFileDialog());
-		this->checkBox1 = (gcnew System::Windows::Forms::CheckBox());
 		this->pictureGroupBox->SuspendLayout();
 		(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox))->BeginInit();
 		this->toolsGroupBox->SuspendLayout();
@@ -203,6 +203,17 @@ private:
 		this->toolsGroupBox->TabIndex = 1;
 		this->toolsGroupBox->TabStop = false;
 		this->toolsGroupBox->Text = L"Инструменты";
+		// 
+		// checkBox1
+		// 
+		this->checkBox1->AutoSize = true;
+		this->checkBox1->Location = System::Drawing::Point(6, 352);
+		this->checkBox1->Name = L"checkBox1";
+		this->checkBox1->Size = System::Drawing::Size(130, 17);
+		this->checkBox1->TabIndex = 41;
+		this->checkBox1->Text = L"Удалить невидимые";
+		this->checkBox1->UseVisualStyleBackColor = true;
+		this->checkBox1->CheckedChanged += gcnew System::EventHandler(this, &MyForm::checkBox1_CheckedChanged);
 		// 
 		// label14
 		// 
@@ -488,21 +499,11 @@ private:
 		this->оПрограммеToolStripMenuItem->Name = L"оПрограммеToolStripMenuItem";
 		this->оПрограммеToolStripMenuItem->Size = System::Drawing::Size(94, 20);
 		this->оПрограммеToolStripMenuItem->Text = L"О программе";
+		this->оПрограммеToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::оПрограммеToolStripMenuItem_Click);
 		// 
 		// openFileDialog1
 		// 
 		this->openFileDialog1->FileName = L"openFileDialog1";
-		// 
-		// checkBox1
-		// 
-		this->checkBox1->AutoSize = true;
-		this->checkBox1->Location = System::Drawing::Point(6, 352);
-		this->checkBox1->Name = L"checkBox1";
-		this->checkBox1->Size = System::Drawing::Size(130, 17);
-		this->checkBox1->TabIndex = 41;
-		this->checkBox1->Text = L"Удалить невидимые";
-		this->checkBox1->UseVisualStyleBackColor = true;
-		this->checkBox1->CheckedChanged += gcnew System::EventHandler(this, &MyForm::checkBox1_CheckedChanged);
 		// 
 		// MyForm
 		// 
@@ -582,6 +583,9 @@ private: System::Void checkBox1_CheckedChanged(System::Object^  sender, System::
 
 	delete pictureBox->Image;
 	pictureBox->Image = resultBitmap;
+}
+private: System::Void оПрограммеToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+	MessageBox::Show("Семинар 5. Удаление невидимых линий\nКурбаков Д.С.\nНа панели инструментов представлены ползунки и кнопки для управления телом\nWindows 10\nVisual Studio 2017\ni7-7700 gtx1070\n18.10.2017");
 }
 };
 
