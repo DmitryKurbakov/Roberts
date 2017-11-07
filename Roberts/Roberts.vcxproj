@@ -20,7 +20,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{B5CCDAD2-195B-4D7E-816E-C3CC11FC104D}</ProjectGuid>
+    <ProjectGuid>{5E7E9C25-2C71-4D50-914E-8B82257151C3}</ProjectGuid>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <Keyword>ManagedCProj</Keyword>
     <RootNamespace>Splines</RootNamespace>
