@@ -42,5 +42,8 @@ public:
 	array<float, 2>^ GetBodyMatrix(array<float, 2>^ v, array<int, 2>^ f);
 	array<float, 2>^ GetFixedMatrix(array<float, 2>^ b, array<float>^ m);
 	array<int, 2>^ CheckFaces(array<float, 2>^ b);
+
+
+	//void SetSphere(float angle0, float angle1);
 };
 

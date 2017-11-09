@@ -43,14 +43,15 @@ Model ^ FilesHandler::GetModel(String ^ fileName)
 		{
 			for (size_t j = 0; j < t->GetLength(1) - 1; j++)
 			{
-				t[i, j] = (float)Double::Parse(strings[i + 1]->Split(' ')[j]);
+				String^ st = (strings[i + 1]->Split(' ')[j])->Trim();
+				t[i, j] = float::Parse(st, System::Globalization::CultureInfo::InvariantCulture) * 100;
 			}
 			t[i, 3] = 1;
 		}
 
 
 		//FACES
-		int f = ((v == 4) || (v == 6) || (v == 12)) ? 3 : (v == 8) ? 4 : 5;
+		int f = ((v == 4) || (v == 6) || (v == 12) || (v > 20)) ? 3 : (v == 8) ? 4 : 5;
 
 		array<int, 2>^ faceMatrix = gcnew array<int, 2>(Int32::Parse(strings[v + 1]), f);
 

@@ -141,6 +141,7 @@
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="MyFormController.cpp" />
     <ClCompile Include="Model.cpp" />
+    <ClCompile Include="Sphere.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Algorithms.h" />
@@ -152,6 +153,7 @@
     </ClInclude>
     <ClInclude Include="MyFormController.h" />
     <ClInclude Include="Model.h" />
+    <ClInclude Include="Sphere.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MyForm.resx">
@@ -163,6 +165,7 @@
     <Text Include="hexahedron.txt" />
     <Text Include="icosahedron.txt" />
     <Text Include="octahedron.txt" />
+    <Text Include="sphere.txt" />
     <Text Include="tetrahedron.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

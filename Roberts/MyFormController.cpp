@@ -26,6 +26,10 @@ MyFormController::~MyFormController()
 void MyFormController::OnFormLoad()
 {
 
+	Sphere^ sp = gcnew Sphere();
+
+	sp->SetSphere();
+
 	//Bitmap^ inputBitmap = gcnew Bitmap(pictureBox->Image);
 	Bitmap^ resultBitmap = gcnew Bitmap(pictureBox->Image->Width, pictureBox->Image->Height);
 
@@ -33,7 +37,12 @@ void MyFormController::OnFormLoad()
 	//mod->tet = fh->GetModel("hexahedron.txt");
 	//mod->tet = fh->GetModel("icosahedron.txt");
 	//mod->tet = fh->GetModel("octahedron.txt");
+	
 	mod->tet = fh->GetModel(fileName);
+
+	//mod->tet = gcnew Model(sp->vertices, sp->faces);
+
+	//resultBitmap = mod->DrawSphere(resultBitmap, sp->SetSphere());//mod->DrawTetrahedron(resultBitmap, mode, z, del);
 
 	resultBitmap = mod->DrawTetrahedron(resultBitmap, mode, z, del);
 

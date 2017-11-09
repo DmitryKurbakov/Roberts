@@ -487,3 +487,21 @@ array<int, 2>^ Model::CheckFaces(array<float, 2>^ b)
 	return fm;
 }
 
+
+
+//void Model::SetSphere(float angle0, float angle1)
+//{
+//
+//	float sin0 = Math::Sin(angle0);
+//	float cos0 = Math::Cos(angle0);
+//
+//	float sin1 = Math::Sin(angle1);
+//	float cos1 = Math::Cos(angle1);
+//
+//
+//
+//
+//}
+
+
+

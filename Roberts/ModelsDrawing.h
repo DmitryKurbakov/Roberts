@@ -27,6 +27,8 @@ public:
 	Bitmap^ DrawTetrahedron(Bitmap^ bm, int mode, float z, bool del);
 	//Bitmap^ DrawTetrahedronUsingPerspectiveProjection(Bitmap^ bm);
 
+	Bitmap^ DrawSphere(Bitmap^ bm, List<List<float>^>^ m);
+
 	List<PointF>^ GetListOfTetrahedronPoints(array<float, 2>^ m); 
 
 	array<float, 2>^ GetCenteringModelmatrix(array<float, 2>^ m);

@@ -112,6 +112,17 @@ Bitmap ^ ModelsDrawing::DrawTetrahedron(Bitmap^ bm, int mode, float z, bool del)
 //	return bm;
 //}
 
+Bitmap ^ ModelsDrawing::DrawSphere(Bitmap ^ bm, List<List<float>^>^ m)
+{
+	
+	for each (List<float>^ l in m)
+	{
+		bm->SetPixel(x0 + l[0], y0 + l[1], Color::Blue);
+	}
+
+	return bm;
+}
+
 List<PointF>^ ModelsDrawing::GetListOfTetrahedronPoints(array<float, 2>^ m)
 {
 	List<PointF>^ p = gcnew List<PointF>();

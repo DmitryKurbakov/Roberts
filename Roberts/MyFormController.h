@@ -2,6 +2,7 @@
 
 #include "ModelsDrawing.h"
 #include "FilesHandler.h"
+#include "Sphere.h"
 
 using namespace System::Windows::Forms;
 
@@ -23,7 +24,7 @@ public:
 	bool del = false;
 	float z = 150;
 
-	String^ fileName = "hexahedron.txt";
+	String^ fileName = "sphere.txt";
 	//int delta = 500;
 
 	MyFormController(PictureBox^ p);
