@@ -22,6 +22,8 @@ Bitmap ^ ModelsDrawing::DrawTetrahedron(Bitmap^ bm, int mode, float z, bool del)
 	//tt = tet->GetRotationMatrix(tt, 2, 0.3);
 	List<PointF>^ points;
 	
+	tet->transVertixMatrix = tet->NormalizeMatrix(tet->transVertixMatrix);
+
 	array<int, 2>^ r = del ?
 		tet->RobertsAlgorithm(tet->transVertixMatrix, tet->faceMatrix)
 		: tet->faceMatrix;
@@ -35,9 +37,10 @@ Bitmap ^ ModelsDrawing::DrawTetrahedron(Bitmap^ bm, int mode, float z, bool del)
 	else if (mode == 1)
 	{
 
-		array<float, 2>^ t = tet->GetSinglePointPerspectiveProjectionPoints(
-			tet->GetSinglePointPerspectiveProjectionMatrix(
+		array<float, 2>^ t = tet->NormalizeMatrix(tet->GetSinglePointPerspectiveProjectionMatrix(
 				tet->transVertixMatrix, z));
+
+		tet->transVertixMatrix = tet->NormalizeMatrix(tet->transVertixMatrix);
 		
 		modVertixMatrix = GetCenteringModelmatrix(t);
 

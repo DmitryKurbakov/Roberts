@@ -44,7 +44,8 @@ Model ^ FilesHandler::GetModel(String ^ fileName)
 			for (size_t j = 0; j < t->GetLength(1) - 1; j++)
 			{
 				String^ st = (strings[i + 1]->Split(' ')[j])->Trim();
-				t[i, j] = float::Parse(st, System::Globalization::CultureInfo::InvariantCulture) * 100;
+				t[i, j] = float::Parse(st, System::Globalization::CultureInfo::InvariantCulture);
+				if (v > 20) t[i, j] *= 100;
 			}
 			t[i, 3] = 1;
 		}

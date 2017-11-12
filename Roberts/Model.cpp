@@ -342,6 +342,8 @@ array<float, 2>^ Model::GetParallelProjectionMatrix(array<float, 2>^ m)
 		{ 0., 0., 0., 1. },
 	};
 
+//	NormalizeMatrix(m);
+
 	return MatrixMultiply(m, t);
 }
 
@@ -355,12 +357,14 @@ array<float, 2>^ Model::GetSinglePointPerspectiveProjectionMatrix(array<float, 2
 		{ 0., 0., 0., 1. },
 	};
 
+//	NormalizeMatrix(m);
+
 	t = MatrixMultiply(m, t);
 
 	return t;
 }
 
-array<float, 2>^ Model::GetSinglePointPerspectiveProjectionPoints(array<float, 2>^ m)
+array<float, 2>^ Model::NormalizeMatrix(array<float, 2>^ m)
 {
 	for (int i = 0; i < m->GetLength(0); i++)
 	{
@@ -370,6 +374,26 @@ array<float, 2>^ Model::GetSinglePointPerspectiveProjectionPoints(array<float, 2
 	}
 
 	return m;
+}
+
+array<float, 2>^ Model::Normalize(array<float, 2>^ m)
+{
+	
+	for (size_t i = 0; i < m->GetLength(0); i++)
+	{
+
+		float locLength = Math::Sqrt((m[i, 0] * m[i, 0]) + (m[i, 1] * m[i, 1]) + (m[i, 2] * m[i, 2]));
+		float invLength = 1 / locLength;
+
+		int s = 100;
+
+		m[i, 0] *= invLength * s;
+		m[i, 1] *= invLength * s;
+		m[i, 2] *= invLength * s;
+	}
+
+	return m;
+
 }
 
 array<int, 2>^ Model::RobertsAlgorithm(array<float, 2>^ v, array<int, 2>^ f)

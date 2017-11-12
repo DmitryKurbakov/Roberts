@@ -34,9 +34,10 @@ public:
 	array<float, 2>^ GetParallelProjectionMatrix(array<float, 2>^ m);
 	array<float, 2>^ GetSinglePointPerspectiveProjectionMatrix(array<float, 2>^ m, float z);
 
-	array<float, 2>^ GetSinglePointPerspectiveProjectionPoints(array<float, 2>^ m);
+	array<float, 2>^ NormalizeMatrix(array<float, 2>^ m);
 	//array<float, 2>^ MatrixMultiply(array<float, 2>^ a, array<float, 2>^ b);
 
+	array<float, 2>^ Normalize(array<float, 2>^ m);
 	
 	array<int, 2>^ RobertsAlgorithm(array<float, 2>^ v, array<int, 2>^ f);
 	array<float, 2>^ GetBodyMatrix(array<float, 2>^ v, array<int, 2>^ f);
