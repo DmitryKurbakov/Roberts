@@ -400,7 +400,7 @@ array<int, 2>^ Model::RobertsAlgorithm(array<float, 2>^ v, array<int, 2>^ f)
 {
 	array<float, 2>^ bodyMatrix = GetBodyMatrix(v, f);
 
-	array<float>^ testVector = gcnew array<float>(4){10, 10, 0, 1};
+	array<float>^ testVector = gcnew array<float>(4){100, -100, 100, 100};
 
 	//bodyMatrix = GetRotationMatrix(bodyMatrix, 1, 100);
 
@@ -410,6 +410,17 @@ array<int, 2>^ Model::RobertsAlgorithm(array<float, 2>^ v, array<int, 2>^ f)
 
 
 }
+
+float GetDeterminant(array<float, 2>^ m)
+{
+	return m[0, 0] * m[1, 1] * m[2, 2] +
+		m[0, 1] * m[1, 2] * m[2, 0] +
+		m[0, 2] * m[1, 0] * m[2, 1] -
+		m[0, 2] * m[1, 1] * m[2, 0] -
+		m[0, 0] * m[1, 2] * m[2, 1] -
+		m[0, 1] * m[1, 0] * m[2, 2];
+}
+
 
 array<float, 2>^ Model::GetBodyMatrix(array<float, 2>^ v, array<int, 2>^ f)
 {
@@ -436,10 +447,23 @@ array<float, 2>^ Model::GetBodyMatrix(array<float, 2>^ v, array<int, 2>^ f)
 
 		float A, B, C, D;
 
-		A = p1[1]*(p2[2] - p3[2]) + p2[1]*(p3[2] - p1[2]) + p3[1]*(p1[2] - p2[2]);
+		/*A = p1[1]*(p2[2] - p3[2]) + p2[1]*(p3[2] - p1[2]) + p3[1]*(p1[2] - p2[2]);
 		B = p1[2]*(p2[0] - p3[0]) + p2[2]*(p3[0] - p1[0]) + p3[2]*(p1[0] - p2[0]);
 		C = p1[0]*(p2[1] - p3[1]) + p2[0]*(p3[1] - p1[1]) + p2[0]*(p1[1] - p2[1]);
-		D = -(p1[0] * (p2[1] * p3[2] - p3[1] * p2[2]) + p2[0] * (p3[1] * p1[2] - p1[1] * p3[2]) + p3[0] * (p1[1] * p2[2] - p2[1] * p1[2]));
+		D = -(p1[0] * (p2[1] * p3[2] - p3[1] * p2[2]) + p2[0] * (p3[1] * p1[2] - p1[1] * p3[2]) + p3[0] * (p1[1] * p2[2] - p2[1] * p1[2]));*/
+
+		array<float, 2>^ matA = { { 1, p1[1], p1[2] },{ 1, p2[1], p2[2] },{ 1, p3[1], p3[2] } };
+		A = GetDeterminant(matA);
+
+		array<float, 2>^ matB = { { p1[0], 1, p1[2] },{ p2[0], 1, p2[2] },{ p3[0], 1, p3[2] } };
+		B = GetDeterminant(matB);
+
+
+		array<float, 2>^ matC = { { p1[0], p1[1], 1 },{ p2[0], p2[1], 1 },{ p3[0], p3[1], 1 } };
+		C = GetDeterminant(matC);
+
+		array<float, 2>^ matD = { { p1[0], p2[0], p3[0] },{ p1[1], p2[1], p3[1] },{ p1[2], p2[2], p3[2] } };
+		D = -GetDeterminant(matD);
 
 		res[0, i] = A;
 		res[1, i] = B;
@@ -475,7 +499,7 @@ array<int, 2>^ Model::CheckFaces(array<float, 2>^ b)
 	System::Collections::Generic::List<System::Collections::Generic::List<int>^>^ temp = gcnew System::Collections::Generic::List<System::Collections::Generic::List<int>^>();
 
 
-	array<float>^ testVector = gcnew array<float>(4) { 0, 0, 1000, 0 };
+	array<float>^ testVector = gcnew array<float>(4) { 0, 0, 1, 0 };
 
 	array<float>^ resVector = VectorMatrixMultiply(testVector, b);
 

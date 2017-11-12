@@ -24,7 +24,7 @@ public:
 	bool del = false;
 	float z = 150;
 
-	String^ fileName = "sphere.txt";
+	String^ fileName = "hexahedron.txt";
 	//int delta = 500;
 
 	MyFormController(PictureBox^ p);
